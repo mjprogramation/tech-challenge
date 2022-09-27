@@ -2,18 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\ProductRepositoryInterface;
+use App\Http\Resources\ProductResource;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    private ProductRepositoryInterface $productRepository;
+
+    public function __construct(ProductRepositoryInterface $productRepositoryInterface)
+    {
+        $this->productRepository = new $productRepositoryInterface;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return ProductResource::collection(
+            $this->productRepository->list($request)->paginate()
+        );
     }
 
     /**
