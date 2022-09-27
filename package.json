@@ -2,7 +2,8 @@
     "private": true,
     "scripts": {
         "start": "webpack --mode development --watch",
-        "prod" : "webpack --mode production"
+        "prod" : "webpack --mode production",
+        "tailwind": "npx tailwindcss -i ./resources/css/app.css -o ./public/css/style.css --watch"
     },
     "dependencies": {
         "axios": "^0.27.2",
