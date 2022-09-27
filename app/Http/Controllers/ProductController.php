@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contracts\ProductRepositoryInterface;
 use App\Http\Requests\ProductRequest;
 use App\Http\Resources\ProductResource;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -59,9 +60,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+        return ProductResource::make(
+            $this->productRepository->update($request, $product)
+        );
     }
 
     /**

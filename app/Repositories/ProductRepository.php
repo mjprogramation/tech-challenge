@@ -45,7 +45,7 @@ class ProductRepository implements ProductRepositoryInterface {
      */
     public function update(ProductRequest $request, Product $product) : Product
     {
-        $product->update($request->validated);
+        $product->update($request->validated());
         $product->categories()->sync($request->category_id);
 
         return $product->refresh();

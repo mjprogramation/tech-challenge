@@ -68,6 +68,25 @@ class ProductRequestTest extends TestCase
     }
 
 
+    /**
+     * @test
+     */
+    public function testUpdateAProductRequest () 
+    {   
+        $category = Category::factory()->create();
+        $product = Product::factory()->hasAttached($category)->create();
+        $response = $this->put(route('products.update', ['product' => $product]), array_merge(
+            $this->fakeProduct,
+            [
+                'category_id' => [$category->id]
+            ]
+        ));
+
+        $response->assertJsonStructure($this->productJsonStructure);
+        $response->assertJsonPath("data.name", $this->fakeProduct['name']);
+
+    }   
+
 
 
 }
