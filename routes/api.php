@@ -27,4 +27,4 @@ Route::apiResources([
     'categories' => CategoryController::class
 ]);
 
-Route::post('upload/image', [UploadController::class, 'productImage']);
+Route::post('image/product', [UploadController::class, 'productImage']);
