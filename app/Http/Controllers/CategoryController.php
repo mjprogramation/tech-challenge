@@ -2,10 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\CategoryRepositoryInterface;
+use App\Http\Resources\CategoryResource;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
+    private CategoryRepositoryInterface $categoryRepository;
+
+    public function __construct(CategoryRepositoryInterface $categoryRepositoryInterface)
+    {
+        $this->categoryRepository = new $categoryRepositoryInterface;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +22,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return CategoryResource::make(
+            $this->categoryRepository->list()->paginate()
+        );
     }
 
     /**
