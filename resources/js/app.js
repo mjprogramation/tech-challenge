@@ -2,6 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Layout from "./Components/Layout";
+import { CategoryProvider } from "./Contexts/CategoryContext";
 import { ProductProvider } from "./Contexts/ProductContext";
 import Categories from "./Routes/Categories";
 
@@ -20,7 +21,11 @@ const App = () => {
                             <Products/>
                         </ProductProvider>
                     } />
-                    <Route path="categories" exact element={<Categories/>}/>
+                    <Route path="categories" exact element={
+                        <CategoryProvider>
+                            <Categories/>
+                        </CategoryProvider>
+                    }/>
                 </Routes>
             </Layout>
         </BrowserRouter>
