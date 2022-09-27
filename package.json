@@ -1,8 +1,8 @@
 {
     "private": true,
     "scripts": {
-        "dev": "vite",
-        "build": "vite build"
+        "start": "webpack --mode development --watch",
+        "prod" : "webpack --mode production"
     },
     "dependencies": {
         "axios": "^0.27.2",
