@@ -99,6 +99,20 @@ class ProductRequestTest extends TestCase
         $response->assertJsonPath('data.id', $product->id);
     }
 
+    /**
+     * @test
+     */
+    public function testCanDeleteGivenProduct () 
+    {
+        $product = Product::factory()->create();
+        $this->assertDatabaseCount('products', 1);
+
+        $response = $this->delete(route('products.destroy', ['product' => $product]));
+        $response->assertJsonStructure($this->productJsonStructure);
+
+        $this->assertDatabaseCount('products',0);
+    }
+
 
 
 }
