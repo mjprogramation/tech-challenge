@@ -1,10 +1,13 @@
 import React from "react";
+import Header from "../Components/Header";
 
 export default function Products () {
 
 
 
     return (
-        "products"
+        <div className="flex flex-col">
+            <Header title={"Products"} />
+        </div>
     )
 }

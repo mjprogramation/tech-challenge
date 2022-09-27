@@ -8,7 +8,7 @@
     <title>Tech-Challenge</title>
 </head>
 <body>
-    <div id="app"><!-- APP --></div>
+    <div style="height: 100vh; width: 100vw" id="app"><!-- APP --></div>
     <script src="/js/main.js"></script>
 </body>
 </html>
