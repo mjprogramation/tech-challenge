@@ -87,6 +87,18 @@ class ProductRequestTest extends TestCase
 
     }   
 
+    /**
+     * @test
+     */
+    public function testGetProductByIdResquest ()
+    {
+        $product = Product::factory()->create();
+        $response = $this->get(route('products.show', ['product' => $product]));
+
+        $response->assertJsonStructure($this->productJsonStructure);
+        $response->assertJsonPath('data.id', $product->id);
+    }
+
 
 
 }
