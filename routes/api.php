@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UploadController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,5 @@ Route::apiResources([
     'products' => ProductController::class,
     'categories' => CategoryController::class
 ]);
+
+Route::post('upload/image', [UploadController::class, 'productImage']);
