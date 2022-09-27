@@ -4,7 +4,7 @@ export default class Prepare {
 
 
     static getBase(resource) {
-        return process.env.URL + resource
+        return "/api/" + resource
     }
 
     /**
