@@ -15,9 +15,9 @@ class ProductRepository implements ProductRepositoryInterface {
      *
      * @return void
      */
-    public function list (Request $request) : Collection
+    public function list (Request $request) : mixed
     {
-        return Product::all();
+        return Product::with('categories');
     }
 
 

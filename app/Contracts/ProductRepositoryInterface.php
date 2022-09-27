@@ -15,7 +15,7 @@ interface ProductRepositoryInterface {
      * @param Request $request
      * @return Collection
      */
-    public function list (Request $request) : Collection;
+    public function list (Request $request) : mixed;
 
     /**
      * Create a new product
