@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
@@ -37,4 +38,16 @@ class Product extends Model
     protected $casts = [
         'price' => 'float'
     ];
+
+
+    
+    /**
+     * Get product related categories
+     *
+     * @return BelongsToMany
+     */
+    public function categories (): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }
