@@ -10,13 +10,26 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-
+    /**
+     * Initiate productrepository property
+     *
+     * @var ProductRepositoryInterface
+     */
     private ProductRepositoryInterface $productRepository;
 
+
+    /**
+     * Construct Product controller by injecting ProductRepository dependency
+     *
+     * @param ProductRepositoryInterface $productRepositoryInterface
+     */
     public function __construct(ProductRepositoryInterface $productRepositoryInterface)
     {
         $this->productRepository = new $productRepositoryInterface;
     }
+
+
+
     /**
      * Display a listing of the resource.
      *

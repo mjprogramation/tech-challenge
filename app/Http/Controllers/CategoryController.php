@@ -3,18 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\CategoryRepositoryInterface;
+use App\Http\Requests\CategoryRequest;
 use App\Http\Resources\CategoryResource;
 use Illuminate\Http\Request;
 
+
+
+
 class CategoryController extends Controller
 {
-
+    /**
+     * initiate category repository property
+     *
+     * @var CategoryRepositoryInterface
+     */
     private CategoryRepositoryInterface $categoryRepository;
 
+
+    /**
+     * Construct controller by injecting CategoryRepository
+     *
+     * @param CategoryRepositoryInterface $categoryRepositoryInterface
+     */
     public function __construct(CategoryRepositoryInterface $categoryRepositoryInterface)
     {
         $this->categoryRepository = new $categoryRepositoryInterface;
     }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +38,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return CategoryResource::make(
+        return CategoryResource::collection(
             $this->categoryRepository->list()->paginate()
         );
     }
@@ -33,9 +49,11 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        return CategoryResource::make(
+            $this->categoryRepository->create($request)
+        );
     }
 
     /**
