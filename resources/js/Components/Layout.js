@@ -21,7 +21,7 @@ export default function Layout ({ children }) {
                     </Link>
                 </div>
             </div>
-            <div className="flex flex-col w-full h-full overflow-auto container mx-auto">
+            <div className="flex flex-col w-full h-full overflow-auto relative container mx-auto">
                 { children }
             </div>
         </div>

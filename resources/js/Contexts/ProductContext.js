@@ -1,4 +1,5 @@
 import React from "react";
+import Loading from "../Components/Loading";
 import Request from '../Request/Request'
 
 
@@ -23,6 +24,11 @@ export const ProductProvider = ({ children }) => {
     React.useEffect(() => {
         getAllProductsAsync()
     }, [])
+
+    if(products === false) {
+        return <Loading/>
+    }
+
 
     return (
         <ProductContext.Provider value={{
