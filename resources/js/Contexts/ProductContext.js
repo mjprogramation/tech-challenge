@@ -6,6 +6,7 @@ export const ProductProvider = ({ children }) => {
 
     const [products, setProducts] = React.useState(false)
 
+
     return (
         <ProductContext.Provider value={{
             products
