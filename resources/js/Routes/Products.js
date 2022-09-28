@@ -3,6 +3,7 @@ import AddProductForm from "../Components/AddProductForm";
 import Header from "../Components/Header";
 import { ProductContext } from "../Contexts/ProductContext";
 import { CategoryProvider } from "../Contexts/CategoryContext"
+import SingleProduct from "../Components/SingleProduct";
 
 export default function Products () {
 
@@ -29,9 +30,7 @@ export default function Products () {
             <div className="flex flex-col">
                 {
                     products.map((product) => (
-                        <div key={product.id} className="p-2 flex items-center">
-                            { product.name }
-                        </div>
+                        <SingleProduct key={product.id} product={product}/>
                     ))
                 }
             </div>

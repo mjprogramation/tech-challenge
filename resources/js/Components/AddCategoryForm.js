@@ -22,6 +22,7 @@ export default function AddCategoryForm ({ close }) {
     const create = async (event) => {
         event.preventDefault()
         await createCategory(form)
+        close()
     }
 
     return (
@@ -38,7 +39,7 @@ export default function AddCategoryForm ({ close }) {
                         onChange={onChange}
                         value={form.name} 
                         type={"text"}
-                        placeholder="Product name"
+                        placeholder="Category Name"
                         className="p-2 border-0 focus:ring-0 bg-gray-100"
                         />
                     <label className="text-xs text-gray-500">Parent</label>

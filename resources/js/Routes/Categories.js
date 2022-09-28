@@ -23,8 +23,25 @@ export default function Categories () {
             <div className="flex flex-col gap-1">
                 {
                     categories.map((category) => (
-                        <div key={category.id} className="p-2">
-                            { category.name }
+                        <div key={category.id} className="p-2 border-b rounded flex items-center">
+                            <span className="w-[3rem] text-emerald-500">
+                                # { category.id }
+                            </span>
+                            <div className="w-1/6 text-gray-500 flex flex-col">
+                                <span className="text-xs text-gray-300 font-bold">
+                                    Name
+                                </span>
+                                { category.name }
+                            </div>
+                            {
+                                category.parent && 
+                                <div className="w-1/6 text-gray-500 flex flex-col">
+                                    <span className="text-xs text-gray-300 font-bold">
+                                        Parent Category
+                                    </span>
+                                    { category.parent.name } ({category.parent.id})
+                                </div>
+                            }
                         </div>
                     ))
                 }
