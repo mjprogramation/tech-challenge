@@ -62,5 +62,21 @@ to update tailwind css or to rebuild use (keept runing)
 $ npm run tailwind
 ```
 
+## Create Product using CLI
+To create a product using interactive cli use
+```bash
+$ php artisan product:create
+```
+
+and follow instructions, if there is no categories yet on your database, the cli will ask you to generate a default one before procceed with creating the product
+
+to specify optional attributes you can use field names to specify there values:
+
+```bash
+$ php artisan product:create --name=test description="product description" --price=10.25
+```
+
+
+
 
 
