@@ -17,7 +17,21 @@ class ProductRepository implements ProductRepositoryInterface {
      */
     public function list (Request $request) : mixed
     {
-        return Product::with('categories');
+
+        $products = new Product();
+
+        if($request->has('category') && $request->filled('category')) {
+            $products = $products->whereHas('categories',function ( $query) use($request) {
+                $query->where('category_product.category_id', $request->category);
+            });
+        }
+
+        if($request->has('price') && $request->filled('price')) {
+            $products = $products->orderBy('price', $request->price);
+        }
+
+
+        return $products;
     }
 
 
