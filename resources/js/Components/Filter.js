@@ -26,8 +26,8 @@ export default function Filter () {
                 }
             </select>
             <select name="price" onChange={onChange} value={filter.price} className="text-sm p-2 border-0 focus:ring-0 bg-white rounded w-1/6">
-                <option value={"desc"}>lowest first</option>
-                <option value={"asc"}>highest first</option>
+                <option value={"asc"}>lowest first</option>
+                <option value={"desc"}>highest first</option>
             </select>
             <button onClick={getProducts} className="text-sm bg-yellow-500 flex gap-1 ease-in-out duration-300 items-center text-white rounded px-4 py-1 hover:bg-yellow-600">
                 Filter <HiOutlineFilter className="text-yellow-300"/>
