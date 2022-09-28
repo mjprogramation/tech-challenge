@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
-
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Layout ({ children }) {
 
@@ -8,6 +9,7 @@ export default function Layout ({ children }) {
 
     return(
         <div className="flex h-full w-full">
+            <ToastContainer/>
             <div className="flex flex-col p-2 shadow h-full bg-gray-100 text-gray-500 w-[13rem]">
                 <span className="font-bold text-sm">
                     Navigation

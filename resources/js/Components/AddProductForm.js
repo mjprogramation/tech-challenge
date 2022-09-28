@@ -1,8 +1,9 @@
 import _ from "lodash";
 import React from "react";
-import { MdClose } from "react-icons/md"
+import { MdClose, MdDelete } from "react-icons/md"
 import { CategoryContext } from "../Contexts/CategoryContext";
 import { ProductContext } from "../Contexts/ProductContext";
+import UploadImage from "./UploadImage";
 
 
 export default function AddProductForm ({ close }) {
@@ -18,6 +19,18 @@ export default function AddProductForm ({ close }) {
         image: null,
         price: '',
         category_id: []
+    })
+
+    const setUploadedImage = (imageUri) => {
+        setForm({
+            ...form,
+            image: imageUri
+        })
+    }
+
+    const removeImage = () => setForm({
+        ...form,
+        image: null
     })
 
     const onChange = ({ target }) => {
@@ -81,9 +94,16 @@ export default function AddProductForm ({ close }) {
                         className="p-2 border-0 focus:ring-0 bg-gray-100"
                         />
                     <label className="text-xs text-gray-500">featured image</label>
-                    <div className="h-[5rem] bg-gray-100 rounded flex items-center justify-center text-gray-500">
-                        Upload Image
-                    </div>
+                    {
+                        !form.image && <UploadImage setImage={setUploadedImage} />
+                    }
+                    {
+                        form.image && 
+                        <div className="flex items-center h-16 justify-between overflow-hidden">
+                            <img src={form.image} height={100} width={100} />
+                            <MdDelete onClick={removeImage} className="text-xl text-red-500 cursor-pointer"/>
+                        </div>
+                    }
                     <label className="text-xs text-gray-500">Product category</label>
                     <select required multiple={true} onChange={onChangeSelectedCategories} className="p-2 border-0 focus:ring-0 bg-gray-100">
                         <option disabled value={""}>Choose</option>
