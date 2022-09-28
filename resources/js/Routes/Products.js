@@ -10,7 +10,7 @@ export default function Products () {
 
     const { products } = React.useContext(ProductContext)
 
-    const [add, setAdd] = React.useState(!false)
+    const [add, setAdd] = React.useState(false)
 
     const toggle = () => setAdd(!add)
 

@@ -10,8 +10,8 @@ export default function SingleProduct ({ product })  {
             <div className="px-5">
                 # { product.id }
             </div>
-            <div className="w-16 h-16 rounded-full shadow-xl">
-                <img src={ productImage } height={100} width={100}/>
+            <div className="w-16 h-16 overflow-hidden rounded-full shadow-xl">
+                <img src={ productImage } className="h-full w-full" height={100} width={100}/>
             </div>
             <div className="flex flex-col w-1/6 px-4">
                 <span className="text-gray-400 font-bold text-sm">
