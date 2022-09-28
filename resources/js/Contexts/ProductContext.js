@@ -9,11 +9,16 @@ export const ProductProvider = ({ children }) => {
 
     const [products, setProducts] = React.useState(false)
 
-    const getAllProductsAsync = async () => {
+    const [filter, setFilter] = React.useState({
+        category: "",
+        price: 'desc'
+    })
+
+    const getProducts = async () => {
 
         
         try {
-            const { data } = await request.get()
+            const { data } = await request.get(filter)
 
             setProducts(data.data)
         } catch (error) {
@@ -35,7 +40,7 @@ export const ProductProvider = ({ children }) => {
     }
 
     React.useEffect(() => {
-        getAllProductsAsync()
+        getProducts()
     }, [])
 
     if(products === false) {
@@ -46,6 +51,9 @@ export const ProductProvider = ({ children }) => {
     return (
         <ProductContext.Provider value={{
             products,
+            filter,
+            setFilter,
+            getProducts,
             createProduct
         }}>
             { children }

@@ -4,6 +4,7 @@ import Header from "../Components/Header";
 import { ProductContext } from "../Contexts/ProductContext";
 import { CategoryProvider } from "../Contexts/CategoryContext"
 import SingleProduct from "../Components/SingleProduct";
+import Filter from "../Components/Filter";
 
 export default function Products () {
 
@@ -22,11 +23,12 @@ export default function Products () {
                     Create a new product
                 </button>
             </div>
-            { add && 
             <CategoryProvider>
-                <AddProductForm close={toggle} />
-            </CategoryProvider> }
-
+                { add && 
+                    <AddProductForm close={toggle} />
+                }
+                <Filter/>
+            </CategoryProvider> 
             <div className="flex flex-col">
                 {
                     products.map((product) => (
