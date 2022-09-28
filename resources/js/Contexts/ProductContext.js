@@ -2,7 +2,7 @@ import React from "react";
 import Loading from "../Components/Loading";
 import Request from '../Request/Request'
 
-
+const request = new Request('products')
 export const ProductContext = React.createContext()
 
 export const ProductProvider = ({ children }) => {
@@ -11,11 +11,24 @@ export const ProductProvider = ({ children }) => {
 
     const getAllProductsAsync = async () => {
 
-        const request = new Request('products')
+        
         try {
             const { data } = await request.get()
 
             setProducts(data.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const createProduct = async (productForm) => {
+        try {
+            const { data } = await request.post(productForm)
+            setProducts(products => {
+                const newState = [ ...products ]
+                newState.push(data.data)
+                return newState
+            })
         } catch (error) {
             console.log(error)
         }
@@ -32,7 +45,8 @@ export const ProductProvider = ({ children }) => {
 
     return (
         <ProductContext.Provider value={{
-            products
+            products,
+            createProduct
         }}>
             { children }
         </ProductContext.Provider>

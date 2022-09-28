@@ -2,6 +2,7 @@ import React from "react";
 import AddProductForm from "../Components/AddProductForm";
 import Header from "../Components/Header";
 import { ProductContext } from "../Contexts/ProductContext";
+import { CategoryProvider } from "../Contexts/CategoryContext"
 
 export default function Products () {
 
@@ -20,7 +21,10 @@ export default function Products () {
                     Create a new product
                 </button>
             </div>
-            { add && <AddProductForm close={toggle} /> }
+            { add && 
+            <CategoryProvider>
+                <AddProductForm close={toggle} />
+            </CategoryProvider> }
 
             <div className="flex flex-col">
                 {
