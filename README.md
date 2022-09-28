@@ -73,7 +73,7 @@ and follow instructions, if there is no categories yet on your database, the cli
 to specify optional attributes you can use field names to specify there values:
 
 ```bash
-$ php artisan product:create --name=test description="product description" --price=10.25
+$ php artisan product:create --name=test --description="product description" --price=10.25
 ```
 
 
